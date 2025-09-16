@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { startAnomalyWatcher } from './services/anomalyWatcher';
+import { startZoneWatcher } from './services/zoneWatcher';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,3 +17,7 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// Start anomaly watcher (noop if Firebase not configured)
+try { startAnomalyWatcher(); } catch (e) { /* noop */ }
+try { startZoneWatcher(); } catch (e) { /* noop */ }
